@@ -17,17 +17,17 @@ namespace nc {
 
 	private:
 
-		float m_angle = 0;
-		float m_time = 0;
+		float m_time;
 		float m_speed = 5;
 
-		glm::vec3 m_position;
-		std::vector<vec2> m_positions;
+		glm::vec2 m_tiling = { 1, 1 };
+		glm::vec2 m_offset = { 0, 0 };
 
 		Transform m_transform;
 
 		GLuint m_vao;
 		res_t<Program> m_program;
+		res_t<Texture> m_texture;
 
 	};
 

@@ -44,5 +44,14 @@
     <None Include="..\..\Build\Assets\shaders\unlit_color.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_texture.prog">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_texture.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_texture.frag">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

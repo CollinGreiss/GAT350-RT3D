@@ -8,6 +8,7 @@ namespace nc {
 	class PhysicsComponent : public Component {
 
 	public:
+
 		virtual void ApplyForce( const glm::vec3& force ) = 0;
 		virtual void ApplyTorque( float torque ) = 0;
 

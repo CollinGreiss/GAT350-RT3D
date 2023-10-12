@@ -40,4 +40,5 @@ namespace nc {
 		m_resources[filename] = resource;
 		return resource;
 	}
+
 }
