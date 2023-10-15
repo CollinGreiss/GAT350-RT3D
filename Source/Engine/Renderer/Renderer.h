@@ -5,6 +5,7 @@
 #include "Model.h"
 #include "Texture.h"
 #include "Gui.h"
+#include "VertexBuffer.h"
 
 #include <glad/include/glad/glad.h>
 #include <SDL2-2.28.4/include/SDL.h>
