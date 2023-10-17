@@ -156,9 +156,12 @@
     <ClInclude Include="World03.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Build\Assets\materials\quad.mtrl" />
     <None Include="..\..\Build\Assets\shaders\unlit_color.frag" />
     <None Include="..\..\Build\Assets\shaders\unlit_color.prog" />
     <None Include="..\..\Build\Assets\shaders\unlit_color.vert" />
+    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.frag" />
+    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.prog" />
     <None Include="..\..\Build\Assets\shaders\unlit_texture.frag" />
     <None Include="..\..\Build\Assets\shaders\unlit_texture.prog" />
     <None Include="..\..\Build\Assets\shaders\unlit_texture.vert" />

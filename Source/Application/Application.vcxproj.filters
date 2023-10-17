@@ -8,6 +8,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{7c5c2303-f18b-435a-a47b-3b50f98386c7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Materials">
+      <UniqueIdentifier>{10d15d40-9f48-4165-af10-0613d405abd8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -52,6 +55,15 @@
     </None>
     <None Include="..\..\Build\Assets\shaders\unlit_texture.frag">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.prog">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\quad.mtrl">
+      <Filter>Materials</Filter>
     </None>
   </ItemGroup>
 </Project>

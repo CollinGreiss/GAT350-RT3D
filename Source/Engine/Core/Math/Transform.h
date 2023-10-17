@@ -27,7 +27,7 @@ namespace nc {
 		glm::mat4 GetMatrix() const {
 
 			glm::mat4 ms = glm::scale( scale );
-			glm::mat4 mr = glm::eulerAngleXYZ( DegreesToRadians( rotation.x ), DegreesToRadians( rotation.y ), DegreesToRadians( rotation.z ));
+			glm::mat4 mr = glm::eulerAngleXYZ( glm::radians( rotation.x ), glm::radians( rotation.y ), glm::radians( rotation.z ));
 			glm::mat4 mt = glm::translate( position );
 			glm::mat4 mx = mt * ms *mr;
 
