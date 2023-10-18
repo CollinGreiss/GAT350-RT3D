@@ -25,6 +25,8 @@ namespace nc {
 
 		};
 
+		m_vertexBuffer = std::make_shared<VertexBuffer>();
+
 		m_vertexBuffer = GET_RESOURCE( VertexBuffer, "vb" );
 		m_vertexBuffer->CreateVertexBuffer( sizeof( vertexData ), 4, vertexData );
 		m_vertexBuffer->SetAttribute( 0, 3, 8 * sizeof( GLfloat ), 0 );

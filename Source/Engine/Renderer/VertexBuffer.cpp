@@ -60,7 +60,7 @@ namespace nc {
 
 		}
 
-		glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( data ), data, GL_STATIC_DRAW );
+		glBufferData( GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW );
 
 	}
 
@@ -78,7 +78,7 @@ namespace nc {
 
 		glBindVertexArray( m_vao );
 
-		if ( m_ibo )      glDrawElements( primitiveType, m_indexCount, m_indexType, 0 );
+		if (m_ibo )       glDrawElements( primitiveType, m_indexCount, m_indexType, 0 );
 		else if ( m_vbo ) glDrawArrays( primitiveType, 0, m_vertexCount );
 
 	}

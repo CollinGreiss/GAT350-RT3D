@@ -59,7 +59,6 @@ namespace nc {
 		ImGui::ColorEdit4( "Color", glm::value_ptr( color ) );
 		ImGui::DragFloat2( "Tiling", glm::value_ptr( tiling ) );
 		ImGui::DragFloat2( "Offset", glm::value_ptr( offset ), 0.001f, -1, 1 );
-		ImGui::DragFloat2( "Blend", glm::value_ptr( blend ), 0.001f, -1, 1 );
 
 		ImGui::End();
 

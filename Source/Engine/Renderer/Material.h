@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Framework/Resource/Resource.h"
 #include "GUI.h"
 #include <glm/glm/glm.hpp>
@@ -23,10 +24,9 @@ namespace nc {
 
 	public:
 
-		glm::vec4 color;
-		glm::vec2 tiling;
-		glm::vec2 offset;
-		 offset;
+		glm::vec4 color { 1 };
+		glm::vec2 tiling { 1, 1 };
+		glm::vec2 offset { 0, 0 };
 
 	private:
 
