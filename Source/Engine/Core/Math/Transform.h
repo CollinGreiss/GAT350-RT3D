@@ -21,15 +21,15 @@ namespace nc {
 		Transform( const glm::vec3& position, const glm::vec3& rotation = glm::vec3 { 0 }, const glm::vec3& scale = glm::vec3 { 1 } ) :
 			position { position },
 			rotation { rotation },
-			scale { scale } 
-		{ }
+			scale { scale } {
+		}
 
 		glm::mat4 GetMatrix() const {
 
 			glm::mat4 ms = glm::scale( scale );
-			glm::mat4 mr = glm::eulerAngleXYZ( glm::radians( rotation.x ), glm::radians( rotation.y ), glm::radians( rotation.z ));
+			glm::mat4 mr = glm::eulerAngleXYZ( glm::radians( rotation.x ), glm::radians( rotation.y ), glm::radians( rotation.z ) );
 			glm::mat4 mt = glm::translate( position );
-			glm::mat4 mx = mt * ms *mr;
+			glm::mat4 mx = mt * ms * mr;
 
 			return mx;
 

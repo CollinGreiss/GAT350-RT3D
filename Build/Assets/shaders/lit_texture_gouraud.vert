@@ -1,13 +1,13 @@
 #version 430
 
-in layout(location = 0) vec3 fposition;
-in layout(location = 1) vec3 fnormal;
-in layout(location = 2) vec2 ftexcoord;
-in layout(location = 3) vec4 fcolor;
+in layout(location = 0) vec3 vposition;
+in layout(location = 1) vec2 vtexcoord;
+in layout(location = 2) vec3 vnormal;
 
-out layout(location = 0) vec4 ocolor;
-
-layout(binding = 0) uniform sampler2D tex;
+out layout(location = 0) vec3 oposition;
+out layout(location = 1) vec3 onormal;
+out layout(location = 2) vec2 otexcoord;
+out layout(location = 3) vec4 ocolor;
 
 uniform mat4 model;
 uniform mat4 view;
@@ -61,9 +61,13 @@ void main() {
 
 	mat4 modelView = view * model;
 
-	vec3 normal = normalize( mat3( modelView ) * fnormal );;
-	vec3 position = vec3 ( modelView * vec4(fposition, 1) );
+	otexcoord = vtexcoord * material.tiling + material.offset;
+	onormal = normalize( mat3( modelView ) * vnormal );;
+	oposition = vec3 ( modelView * vec4(vposition, 1) );
 
-	ocolor = texture(tex, ftexcoord) * vec4( ads(position, normal), 1 );
+	ocolor = vec4( ads(oposition, onormal), 1 );
+
+	mat4 mvp = projection * view * model;
+	gl_Position = mvp * vec4(vposition, 1.0);
 
 }
