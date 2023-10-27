@@ -7,11 +7,9 @@
 	virtual const char* GetClassName() { return #classname; } \
 	virtual void Read(const json_t& value); \
 	virtual std::unique_ptr<Object> Clone() { return std::make_unique<classname>(*this); } \
-	class Register \
-	{ \
+	class Register { \
 	public: \
-		Register() \
-		{ \
+		Register() { \
 			Factory::Instance().Register<classname>(#classname); \
 		} \
 	};
@@ -20,25 +18,32 @@
 	classname::Register register_class;
 
 
-namespace nc
-{
-	// Base class of Actors in the engine.
-	class Object
-	{
+namespace nc {
+
+	class Object {
+
 	public:
+
 		Object() = default;
-		Object(const std::string& name) : name{ name } {}
-		virtual ~Object() { 
-			OnDestroy(); 
+		Object( const std::string& name ) : name { name } {}
+
+		virtual ~Object() {
+			OnDestroy();
 		}
 
-		CLASS_DECLARATION(Object)
+		CLASS_DECLARATION( Object )
 
 		virtual bool Initialize() { return true; }
 		virtual void OnDestroy() {}
 
+		virtual void ProcessGui() {}
+
 	public:
+
 		std::string name;
 		bool active = true;
+		bool guiSelect = false;
+
 	};
+
 }

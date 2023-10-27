@@ -31,10 +31,6 @@ namespace nc {
 		glm::vec2 tiling { 1, 1 };
 		glm::vec2 offset { 0, 0 };
 
-		glm::vec3 lightPosition { 0, 0, 0 };
-		glm::vec3 diffuseColor { 0.5 };
-		glm::vec3 ambientColor { 0.2 };
-
 	private:
 
 		res_t<Program> m_program;

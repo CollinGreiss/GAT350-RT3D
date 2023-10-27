@@ -5,20 +5,20 @@
 #include "Components/Component.h"
 #include <memory>
 
-namespace nc
-{
-	// Actors are objects that hold components to define their behavior and have a transform.
-	// Actors are contained in a scene and are updated and drawn each frame.
-	class Actor : public Object
-	{
+namespace nc {
+
+	class Actor : public Object {
+
 	public:
-		CLASS_DECLARATION(Actor)
+
+		CLASS_DECLARATION( Actor )
 
 		Actor() = default;
-		Actor(const nc::Transform& transform) :
-			transform{ transform }
-		{}
-		Actor(const Actor& other);
+		Actor( const nc::Transform& transform ) :
+			transform { transform } {
+		}
+		Actor( const Actor& other );
+
 		virtual ~Actor() {
 			OnDestroy();
 		}
@@ -26,15 +26,17 @@ namespace nc
 		virtual bool Initialize() override;
 		virtual void OnDestroy() override;
 
-		virtual void Update(float dt);
-		virtual void Draw(nc::Renderer& renderer);
+		virtual void Update( float dt );
+		virtual void Draw( nc::Renderer& renderer );
 
-		void AddComponent(std::unique_ptr<Component> component);
+		void AddComponent( std::unique_ptr<Component> component );
 		template<typename T>
 		T* GetComponent();
 
-		virtual void OnCollisionEnter(Actor* other) {}
-		virtual void OnCollisionExit(Actor* other) {}
+		virtual void OnCollisionEnter( Actor* other ) {}
+		virtual void OnCollisionExit( Actor* other ) {}
+
+		void ProcessGui() override;
 
 		class Scene* m_scene = nullptr;
 		friend class Scene;
@@ -42,6 +44,7 @@ namespace nc
 		class World* m_game = nullptr;
 
 	public:
+
 		Transform transform;
 		std::string tag;
 		float lifespan = -1.0f;
@@ -50,18 +53,23 @@ namespace nc
 		bool prototype = false;
 
 	protected:
+
 		std::vector<std::unique_ptr<Component>> components;
+
 	};
 
 	template<typename T>
-	inline T* Actor::GetComponent()
-	{
-		for (auto& component : components)
-		{
-			T* result = dynamic_cast<T*>(component.get());
-			if (result) return result;
+	inline T* Actor::GetComponent() {
+
+		for ( auto& component : components ) {
+
+			T* result = dynamic_cast<T*>( component.get() );
+			if ( result ) return result;
+
 		}
 
 		return nullptr;
+
 	}
+
 }

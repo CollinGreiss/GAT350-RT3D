@@ -11,6 +11,9 @@
     <Filter Include="Materials">
       <UniqueIdentifier>{10d15d40-9f48-4165-af10-0613d405abd8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{d4824a00-8742-4ff4-9cd3-393c0aa29fa3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -28,6 +31,9 @@
     <ClCompile Include="World04.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="World05.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="World01.h">
@@ -42,32 +48,11 @@
     <ClInclude Include="World04.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="World05.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Build\Assets\shaders\unlit_color.prog">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_color.vert">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_color.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_texture.prog">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_texture.vert">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_texture.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.prog">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="..\..\Build\Assets\materials\quad.mtrl">
       <Filter>Materials</Filter>
     </None>
@@ -83,14 +68,20 @@
     <None Include="..\..\Build\Assets\materials\grid.mtrl">
       <Filter>Materials</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\lit_texture_gouraud.vert">
+    <None Include="..\..\Build\Assets\shaders\multi_lit_texture.vert">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\lit_texture_gouraud.frag">
+    <None Include="..\..\Build\Assets\shaders\multi_lit_texture.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\lit_texture_gouraud.prog">
+    <None Include="..\..\Build\Assets\shaders\multi_lit_texture.prog">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\squirrel.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\scenes\scene.json">
+      <Filter>Scenes</Filter>
     </None>
   </ItemGroup>
 </Project>
