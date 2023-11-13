@@ -11,34 +11,16 @@ namespace nc {
 	bool World05::Initialize() {
 
 		m_scene = std::make_unique<Scene>();
-		m_scene->Load("json/scene.json");
+		m_scene->Load( "json/scene.json" );
 		m_scene->Initialize();
 
-		/*{
-			auto actor = CREATE_CLASS( Actor );
-			actor->name = "actor1";
-			actor->transform.position = glm::vec3 { 0, 0, 0 };
-			auto modelComponent = CREATE_CLASS( ModelComponent );
-			modelComponent->model = std::make_shared<Model>();
-			modelComponent->model->SetMaterial( GET_RESOURCE( Material, "materials/squirrel.mtrl" ) );
-			modelComponent->model->Load( "models/squirrel.glb", glm::vec3 { 0, -0.7f, 0 }, glm::vec3 { 0 }, glm::vec3 { 0.4f } );
-			actor->AddComponent( std::move( modelComponent ) );
-			m_scene->Add( std::move( actor ) );
-		}*/
+		for ( int i = 0; i < 15; i++ ) {
 
-		{
-			auto actor = CREATE_CLASS( Actor );
-			actor->name = "light1";
-			actor->transform.position = glm::vec3 { 3, 3, 3 };
-			auto lightComponent = CREATE_CLASS( LightComponent );
-			lightComponent->type = LightComponent::eType::Point;
-			lightComponent->color = glm::rgbColor( glm::vec3 { randomf() * 360, 1, 1 } );
-			lightComponent->intensity = 1;
-			lightComponent->range = 20;
-			lightComponent->innerAngle = 10.0f;
-			lightComponent->outerAngle = 30.0f;
-			actor->AddComponent( std::move( lightComponent ) );
-			m_scene->Add( std::move( actor ) );
+			auto actor = CREATE_CLASS_BASE( Actor, "tree" );
+			actor->transform.position = glm::vec3( randomf(-10, 10), 0, randomf( -10, 10 ) );
+			actor->Initialize();
+			m_scene->Add( std::move( actor) );
+
 		}
 
 		return true;
@@ -67,7 +49,7 @@ namespace nc {
 
 		// render
 
-		m_scene->Draw(renderer);
+		m_scene->Draw( renderer );
 		ENGINE.GetSystem<Gui>()->Draw();
 
 		// post-render

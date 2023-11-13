@@ -3,18 +3,23 @@
 #include "Core/Core.h"
 
 namespace nc {
+
 	Program::~Program() {
-		if ( m_program ) {
+
+		if ( m_program )
 			glDeleteProgram( m_program );
-		}
+		
 	}
 
 	bool Program::Create( std::string filename, ... ) {
+
 		// load program json document
 		rapidjson::Document document;
 		if ( !Json::Load( filename, document ) ) {
+
 			ERROR_LOG( "Could not load program file: " << filename );
 			return false;
+
 		}
 
 		// create program
@@ -24,63 +29,82 @@ namespace nc {
 		std::string vertexShader;
 		READ_DATA( document, vertexShader );
 		if ( !vertexShader.empty() ) {
+
 			auto shader = GET_RESOURCE( nc::Shader, vertexShader, GL_VERTEX_SHADER );
 			if ( !shader ) {
+
 				ERROR_LOG( "Could not get shader: " << vertexShader );
 				return false;
+
 			}
+
 			AddShader( shader );
+
 		}
 
 		// get/add fragment shader
 		std::string fragmentShader;
 		READ_DATA( document, fragmentShader );
 		if ( !fragmentShader.empty() ) {
+
 			auto shader = GET_RESOURCE( nc::Shader, fragmentShader, GL_FRAGMENT_SHADER );
 			if ( !shader ) {
+
 				ERROR_LOG( "Could not get shader: " << fragmentShader );
 				return false;
+
 			}
 
 			AddShader( shader );
+
 		}
 
 		return Link();
+
 	}
 
 	void Program::AddShader( const res_t<Shader>& shader ) {
+
 		glAttachShader( m_program, shader->m_shader );
+
 	}
 
 	bool Program::Link() {
-		// link shader programs
+
 		glLinkProgram( m_program );
 
 		// check program link status
 		GLint status;
 		glGetProgramiv( m_program, GL_LINK_STATUS, &status );
 		if ( status == GL_FALSE ) {
+
 			GLint length = 0;
 			glGetProgramiv( m_program, GL_INFO_LOG_LENGTH, &length );
 
 			if ( length > 0 ) {
+
 				std::string infoLog( length, ' ' );
 				glGetProgramInfoLog( m_program, length, &length, &infoLog[0] );
 
 				ERROR_LOG( "Failed to link program: " << infoLog.c_str() );
+
 			}
 
 			glDeleteProgram( m_program );
 			m_program = 0;
 
 			return false;
+
 		}
 
 		return true;
+	
 	}
 
 	void Program::Use() {
+
 		if ( m_program ) glUseProgram( m_program );
+
 	}
 
 	void Program::SetUniform( const std::string& name, float value ) {
@@ -129,18 +153,22 @@ namespace nc {
 	}
 
 	GLint Program::GetUniform( const std::string& name ) {
-		// find uniform in map
+
 		auto uniform = m_uniforms.find( name );
-		// if not found, get uniform in program
+
 		if ( uniform == m_uniforms.end() ) {
-			// get uniform in program
+
 			GLint location = glGetUniformLocation( m_program, name.c_str() );
-			if ( location == -1 ) {
+
+			if ( location == -1 )
 				WARNING_LOG( "Could not find uniform location: " << name.c_str() );
-			}
+
 			m_uniforms[name] = location;
+
 		}
 
 		return m_uniforms[name];
+
 	}
+
 }

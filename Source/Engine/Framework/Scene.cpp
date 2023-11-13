@@ -1,5 +1,5 @@
 #include "Scene.h"
-#include "Framework/Components/CollisionComponent.h"
+#include "Framework/Framework.h"
 
 namespace nc {
 
@@ -24,6 +24,17 @@ namespace nc {
 	}
 
 	void Scene::Draw( Renderer& renderer ) {
+		
+		CameraComponent* camera = nullptr;
+		for ( auto& actor : m_actors ) {
+			if ( !actor->active ) continue;
+
+			camera = actor->GetComponent<CameraComponent>();
+			if ( camera ) break;
+
+		}
+
+		if ( !camera ) ERROR_LOG( "No Camera Found!" );
 
 		std::vector<LightComponent*> lights;
 		for ( auto& actor : m_actors ) {
@@ -42,6 +53,8 @@ namespace nc {
 
 			program->Use();
 
+			if ( camera ) camera->SetProgram( program );
+
 			int index = 0;
 			for ( auto light : lights ) {
 
@@ -52,6 +65,7 @@ namespace nc {
 			}
 
 			program->SetUniform( "numLights", index );
+			program->SetUniform( "ior", 2.0f );
 			program->SetUniform( "ambientLight", ambientColor );
 
 		}

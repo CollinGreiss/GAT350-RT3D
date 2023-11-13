@@ -2,6 +2,7 @@
 #include "Framework/Actor.h"
 #include "Framework/Resource/ResourceManager.h"
 #include "Renderer/Program.h"
+#include <Framework/Engine.h>
 
 namespace nc {
 
@@ -25,7 +26,8 @@ namespace nc {
 	}
 
 	void ModelComponent::Update( float dt ) {
-		
+
+
 	}
 
 	void ModelComponent::Draw( Renderer& renderer ) {
@@ -33,7 +35,18 @@ namespace nc {
 		auto material = model->GetMaterial();
 		material->Bind();
 		material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
+
+		glDepthMask( enableDepth );
+		glCullFace( cullface );
+
 		model->Draw();
+
+	}
+
+	void ModelComponent::ProcessGui( ) {
+
+		auto material = model->GetMaterial();
+		material->ProcessGui();
 
 	}
 
@@ -41,6 +54,16 @@ namespace nc {
 
 		READ_DATA( value, modelName );
 		READ_DATA( value, materialName );
+		
+		READ_DATA( value, enableDepth );
+		
+		std::string cullfaceName;
+		if ( READ_NAME_DATA( value, "cullface", cullfaceName ) ) {
+
+			if ( IsEqualIgnoreCase( cullfaceName, "front" ) ) cullface = GL_FRONT;
+
+		}
+		
 
 	}
 

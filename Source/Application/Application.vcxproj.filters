@@ -11,77 +11,227 @@
     <Filter Include="Materials">
       <UniqueIdentifier>{10d15d40-9f48-4165-af10-0613d405abd8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders\Cubemap">
+      <UniqueIdentifier>{3648cb9f-2252-48a7-a05f-6d227a81e55e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Old Shaders">
+      <UniqueIdentifier>{ba676a38-398b-4ac2-b7b2-19f1d46a548f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Active Shaders">
+      <UniqueIdentifier>{fbb8fd31-caad-4f55-8517-29e9a8d41808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Materials\Active Materials">
+      <UniqueIdentifier>{22430e68-1d74-44e3-b9ab-315a24ededca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Materials\Old Materials">
+      <UniqueIdentifier>{16a589a5-9e2a-40cc-a49d-abeb9ad0b4d3}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Scenes">
       <UniqueIdentifier>{d4824a00-8742-4ff4-9cd3-393c0aa29fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Old Worlds">
+      <UniqueIdentifier>{2fad81bb-9a05-4242-adc8-d3e593be57a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="World01.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="World02.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="World03.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="World04.cpp">
+    <ClCompile Include="World06.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="World05.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Old Worlds</Filter>
+    </ClCompile>
+    <ClCompile Include="World01.cpp">
+      <Filter>Source\Old Worlds</Filter>
+    </ClCompile>
+    <ClCompile Include="World02.cpp">
+      <Filter>Source\Old Worlds</Filter>
+    </ClCompile>
+    <ClCompile Include="World03.cpp">
+      <Filter>Source\Old Worlds</Filter>
+    </ClCompile>
+    <ClCompile Include="World04.cpp">
+      <Filter>Source\Old Worlds</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="World01.h">
+    <ClInclude Include="World06.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="World01.h">
+      <Filter>Source\Old Worlds</Filter>
     </ClInclude>
     <ClInclude Include="World02.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Old Worlds</Filter>
     </ClInclude>
     <ClInclude Include="World03.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Old Worlds</Filter>
     </ClInclude>
     <ClInclude Include="World04.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Old Worlds</Filter>
     </ClInclude>
     <ClInclude Include="World05.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Old Worlds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Build\Assets\materials\quad.mtrl">
-      <Filter>Materials</Filter>
+    <None Include="..\..\Build\Assets\json\scene.json">
+      <Filter>Scenes</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\lit_texture.prog">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\lit_texture.vert">
-      <Filter>Shaders</Filter>
+    <None Include="..\..\Build\Assets\shaders\lit_phong.vert">
+      <Filter>Shaders\Old Shaders</Filter>
     </None>
     <None Include="..\..\Build\Assets\shaders\lit_texture.frag">
-      <Filter>Shaders</Filter>
+      <Filter>Shaders\Old Shaders</Filter>
     </None>
-    <None Include="..\..\Build\Assets\materials\grid.mtrl">
-      <Filter>Materials</Filter>
+    <None Include="..\..\Build\Assets\shaders\lit_texture.prog">
+      <Filter>Shaders\Old Shaders</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\multi_lit_texture.vert">
-      <Filter>Shaders</Filter>
+    <None Include="..\..\Build\Assets\shaders\lit_texture.vert">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_texture_gouraud.frag">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_texture_gouraud.prog">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_texture_gouraud.vert">
+      <Filter>Shaders\Old Shaders</Filter>
     </None>
     <None Include="..\..\Build\Assets\shaders\multi_lit_texture.frag">
-      <Filter>Shaders</Filter>
+      <Filter>Shaders\Old Shaders</Filter>
     </None>
     <None Include="..\..\Build\Assets\shaders\multi_lit_texture.prog">
-      <Filter>Shaders</Filter>
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\multi_lit_texture.vert">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_color.frag">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_color.prog">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_color.vert">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.frag">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.prog">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_texture.frag">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_texture.prog">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_texture.vert">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_phong.frag">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_phong.prog">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\cubemap.frag">
+      <Filter>Shaders\Cubemap</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\skybox.prog">
+      <Filter>Shaders\Cubemap</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\skybox.vert">
+      <Filter>Shaders\Cubemap</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_phong_normal.vert">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_phong_normal.frag">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_phong_normal.prog">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\reflection.prog">
+      <Filter>Shaders\Cubemap</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\reflection.vert">
+      <Filter>Shaders\Cubemap</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\grid.mtrl">
+      <Filter>Materials\Old Materials</Filter>
     </None>
     <None Include="..\..\Build\Assets\materials\squirrel.mtrl">
-      <Filter>Materials</Filter>
+      <Filter>Materials\Old Materials</Filter>
     </None>
-    <None Include="..\..\Build\Assets\scenes\scene.json">
+    <None Include="..\..\Build\Assets\materials\quad.mtrl">
+      <Filter>Materials\Old Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\phong.mtrl">
+      <Filter>Materials\Old Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\skybox.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\ogre.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\reflection.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\refraction.prog">
+      <Filter>Shaders\Cubemap</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\refraction.vert">
+      <Filter>Shaders\Cubemap</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\refraction.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_sprite.prog">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_sprite.vert">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_sprite.frag">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\sprite.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_billboard.prog">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_billboard.vert">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\tree.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\json\scene06.json">
       <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\framebuffer.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\postprocess.prog">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\postprocess.vert">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\postprocess.frag">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\postprocess.mtrl">
+      <Filter>Materials\Active Materials</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -1,0 +1,4 @@
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define CLASS_DECLARATION(classname) virtual const char* GetClassName() { return #classname; } virtual void Read(const json_t& value); virtual std::unique_ptr<Object> Clone() { return std::make_unique<classname>(*this); } class Register { public: Register() { Factory::Instance().Register<classname>(#classname); } };

@@ -31,8 +31,8 @@ namespace nc {
 
 		if ( type == Spot ) {
 
-			ImGui::DragFloat( "Inner Angle", &innerAngle, 1, 0, outerAngle );
-			ImGui::DragFloat( "Outer Angle", &outerAngle, 1, innerAngle, 90 );
+			ImGui::SliderFloat( "Inner Angle", &innerAngle, 0, outerAngle );
+			ImGui::SliderFloat( "Outer Angle", &outerAngle, innerAngle, 90 );
 
 		}
 
@@ -44,7 +44,22 @@ namespace nc {
 	}
 
 	void LightComponent::Read( const nc::json_t& value ) {
+
+		std::string lightType = "";
 		
+		READ_DATA(value, lightType);
+
+		if (lightType == "Point") type = eType::Point;
+		else if (lightType == "Directional") type = eType::Directional;
+		else if (lightType == "Spot") type = eType::Spot;
+		else ERROR_LOG("Light Type Not Found!")
+
+		READ_DATA(value, color);
+		READ_DATA(value, intensity);
+		READ_DATA(value, range);
+		READ_DATA(value, innerAngle);
+		READ_DATA(value, outerAngle);
+
 	}
 
 }

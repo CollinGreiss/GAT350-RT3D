@@ -1,16 +1,20 @@
 #pragma once
+
 #include "Framework/System.h"
 #include "Core/Math/Vector2.h"
+
+#include <glm/glm/glm.hpp>
 #include <SDL2-2.28.4/include/SDL.h>
 #include <vector>
 #include <array>
 
-namespace nc
-{
+namespace nc {
+
 	// Input system that holds the state of input devices (keyboard, mouse).
-	class InputSystem : public ISystem
-	{
+	class InputSystem : public ISystem {
+
 	public:
+
 		InputSystem() = default;
 		~InputSystem() = default;
 
@@ -21,24 +25,30 @@ namespace nc
 
 		// keyboard
 		// Use (SDL_SCANCODE_<KEY>) to check if the key is down this frame.
-		bool GetKeyDown(uint32_t key) const { return m_keyboardState[key]; }
+		bool GetKeyDown( uint32_t key ) const { return m_keyboardState[key]; }
 		// Use (SDL_SCANCODE_<KEY>) to check if the key was down last frame.
-		bool GetPreviousKeyDown(uint32_t key) const { return m_prevKeyboardState[key]; }
+		bool GetPreviousKeyDown( uint32_t key ) const { return m_prevKeyboardState[key]; }
 
 		// mouse
 		// Get mouse position relative to the top left of the screen in pixel coordinates.
-		const Vector2& GetMousePosition() const { return m_mousePosition; }
+		const glm::vec2& GetMousePosition() const { return m_mousePosition; }
+		const glm::vec2& GetMouseRelative() const { return m_mousePosition - m_mousePrevPosition; }
+
 		// Use (0 = left, 1 = middle, 2 = right) to check if the mouse button is down this frame.
-		bool GetMouseButtonDown(uint32_t button) { return m_mouseButtonState[button]; }
+		bool GetMouseButtonDown( uint32_t button ) { return m_mouseButtonState[button]; }
 		// Use (0 = left, 1 = middle, 2 = right) to check if the mouse button was down last frame.
-		bool GetPreviousMouseButtonDown(uint32_t button) { return m_prevMouseButtonState[button]; }
+		bool GetPreviousMouseButtonDown( uint32_t button ) { return m_prevMouseButtonState[button]; }
 
 	private:
+
 		std::vector<uint8_t> m_keyboardState;
 		std::vector<uint8_t> m_prevKeyboardState;
 
-		Vector2 m_mousePosition;
+		glm::vec2 m_mousePosition;
+		glm::vec2 m_mousePrevPosition;
 		std::array<uint8_t, 3> m_mouseButtonState{ 0, 0, 0 };
 		std::array<uint8_t, 3> m_prevMouseButtonState{ 0, 0, 0 };
+
 	};
+
 }

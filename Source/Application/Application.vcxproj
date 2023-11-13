@@ -141,6 +141,7 @@
     <ClCompile Include="World03.cpp" />
     <ClCompile Include="World04.cpp" />
     <ClCompile Include="World05.cpp" />
+    <ClCompile Include="World06.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Core\Core.vcxproj">
@@ -162,18 +163,61 @@
     <ClInclude Include="World03.h" />
     <ClInclude Include="World04.h" />
     <ClInclude Include="World05.h" />
+    <ClInclude Include="World06.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Build\Assets\json\scene.json" />
+    <None Include="..\..\Build\Assets\json\scene06.json" />
+    <None Include="..\..\Build\Assets\materials\framebuffer.mtrl" />
     <None Include="..\..\Build\Assets\materials\grid.mtrl" />
+    <None Include="..\..\Build\Assets\materials\ogre.mtrl" />
+    <None Include="..\..\Build\Assets\materials\phong.mtrl" />
+    <None Include="..\..\Build\Assets\materials\postprocess.mtrl" />
     <None Include="..\..\Build\Assets\materials\quad.mtrl" />
+    <None Include="..\..\Build\Assets\materials\reflection.mtrl" />
+    <None Include="..\..\Build\Assets\materials\refraction.mtrl" />
+    <None Include="..\..\Build\Assets\materials\skybox.mtrl" />
+    <None Include="..\..\Build\Assets\materials\sprite.mtrl" />
     <None Include="..\..\Build\Assets\materials\squirrel.mtrl" />
-    <None Include="..\..\Build\Assets\scenes\scene.json" />
+    <None Include="..\..\Build\Assets\materials\tree.mtrl" />
+    <None Include="..\..\Build\Assets\shaders\cubemap.frag" />
+    <None Include="..\..\Build\Assets\shaders\lit_phong.frag" />
+    <None Include="..\..\Build\Assets\shaders\lit_phong.prog" />
+    <None Include="..\..\Build\Assets\shaders\lit_phong.vert" />
+    <None Include="..\..\Build\Assets\shaders\lit_phong_normal.frag" />
+    <None Include="..\..\Build\Assets\shaders\lit_phong_normal.prog" />
+    <None Include="..\..\Build\Assets\shaders\lit_phong_normal.vert" />
     <None Include="..\..\Build\Assets\shaders\lit_texture.frag" />
     <None Include="..\..\Build\Assets\shaders\lit_texture.prog" />
     <None Include="..\..\Build\Assets\shaders\lit_texture.vert" />
+    <None Include="..\..\Build\Assets\shaders\lit_texture_gouraud.frag" />
+    <None Include="..\..\Build\Assets\shaders\lit_texture_gouraud.prog" />
+    <None Include="..\..\Build\Assets\shaders\lit_texture_gouraud.vert" />
     <None Include="..\..\Build\Assets\shaders\multi_lit_texture.frag" />
     <None Include="..\..\Build\Assets\shaders\multi_lit_texture.prog" />
     <None Include="..\..\Build\Assets\shaders\multi_lit_texture.vert" />
+    <None Include="..\..\Build\Assets\shaders\postprocess.frag" />
+    <None Include="..\..\Build\Assets\shaders\postprocess.prog" />
+    <None Include="..\..\Build\Assets\shaders\postprocess.vert" />
+    <None Include="..\..\Build\Assets\shaders\reflection.prog" />
+    <None Include="..\..\Build\Assets\shaders\reflection.vert" />
+    <None Include="..\..\Build\Assets\shaders\refraction.prog" />
+    <None Include="..\..\Build\Assets\shaders\refraction.vert" />
+    <None Include="..\..\Build\Assets\shaders\skybox.prog" />
+    <None Include="..\..\Build\Assets\shaders\skybox.vert" />
+    <None Include="..\..\Build\Assets\shaders\unlit_billboard.vert" />
+    <None Include="..\..\Build\Assets\shaders\unlit_billboard.prog" />
+    <None Include="..\..\Build\Assets\shaders\unlit_color.frag" />
+    <None Include="..\..\Build\Assets\shaders\unlit_color.prog" />
+    <None Include="..\..\Build\Assets\shaders\unlit_color.vert" />
+    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.frag" />
+    <None Include="..\..\Build\Assets\shaders\unlit_multi_texture.prog" />
+    <None Include="..\..\Build\Assets\shaders\unlit_sprite.frag" />
+    <None Include="..\..\Build\Assets\shaders\unlit_sprite.prog" />
+    <None Include="..\..\Build\Assets\shaders\unlit_sprite.vert" />
+    <None Include="..\..\Build\Assets\shaders\unlit_texture.frag" />
+    <None Include="..\..\Build\Assets\shaders\unlit_texture.prog" />
+    <None Include="..\..\Build\Assets\shaders\unlit_texture.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

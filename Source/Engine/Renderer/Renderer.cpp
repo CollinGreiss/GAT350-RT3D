@@ -69,9 +69,10 @@ namespace nc {
 
 	}
 
-	void Renderer::BeginFrame() {
+	void Renderer::BeginFrame(const glm::vec3& color) {
 
-		glClearColor(0, 0, 0, 1);
+		glDepthMask( GL_TRUE );
+		glClearColor(color.r, color.g, color.b, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	}
@@ -109,6 +110,18 @@ namespace nc {
 	void Renderer::DrawPoint(float x, float y) {
 
 		SDL_RenderDrawPointF(m_renderer, x, y);
+
+	}
+
+	void Renderer::SetViewport( int width, int height ) {
+
+		glViewport( 0, 0, width, height );
+
+	}
+
+	void Renderer::ResetViewport() {
+
+		glViewport( 0, 0, m_width, m_height );
 
 	}
 

@@ -7,6 +7,7 @@
 #include "Material.h"
 #include "Gui.h"
 #include "VertexBuffer.h"
+#include "Framebuffer.h"
 
 #include <glad/include/glad/glad.h>
 #include <SDL2-2.28.4/include/SDL.h>
@@ -27,7 +28,7 @@ namespace nc {
 		void Update() {}
 
 		void CreateWindow(const std::string& title, int width, int height);
-		void BeginFrame();
+		void BeginFrame(const glm::vec3& color = glm::vec3 { 0 } );
 		void EndFrame();
 
 		void SetColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
@@ -36,8 +37,13 @@ namespace nc {
 		void DrawPoint(int x, int y);
 		void DrawPoint(float x, float y);
 
+		void SetViewport( int width, int height );
+		void ResetViewport();
+
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
+
+		SDL_Window* GetWindow() { return m_window; };
 
 		friend class Gui;
 		friend class Texture;
