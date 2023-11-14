@@ -62,7 +62,7 @@ namespace nc {
 			std::vector<std::string> cubemaps;
 			READ_DATA( document, cubemaps );
 
-			cubmapTexture = GET_RESOURCE( Cubemap, cubemapName, cubemaps);
+			cubemapTexture = GET_RESOURCE( Cubemap, cubemapName, cubemaps);
 
 		}
 
@@ -116,6 +116,21 @@ namespace nc {
 
 			emissiveTexture->SetActive( GL_TEXTURE3 );
 			emissiveTexture->Bind();
+
+		}
+
+		if ( cubemapTexture ) {
+
+			cubemapTexture->SetActive( GL_TEXTURE4 );
+			cubemapTexture->Bind();
+
+		}
+
+		if ( depthTexture ) {
+
+			depthTexture->SetActive( GL_TEXTURE5 );
+			depthTexture->Bind();
+
 
 		}
 

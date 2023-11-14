@@ -17,7 +17,12 @@ namespace nc {
 	void CameraComponent::Update( float dt ) {
 
 		view = glm::lookAt( m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), m_owner->transform.Up() );
-		projection = glm::perspective( glm::radians( fov ), aspect, near, far );
+		
+		if (projectionType == eProjectionType::Perspective)
+			projection = glm::perspective(glm::radians(fov), aspect, near, far);
+		else
+			projection = glm::ortho(-size * aspect * 0.5f, size * aspect * 0.5f, -size * aspect * 0.5f, size * aspect * 0.5f, near, far);
+
 
 	}
 
@@ -46,6 +51,13 @@ namespace nc {
 
 	void CameraComponent::ProcessGui() {
 
+		const char* types[] = { "Perspective", "Orthogonal" };
+		ImGui::Combo("Type", (int*)(&projectionType), types, 2);
+
+		ImGui::DragFloat("Size", &size);
+
+		ImGui::Spacing();
+
 		ImGui::SliderFloat( "FOV", &fov, 0.001, 180 );
 		ImGui::SliderFloat( "Aspect", &aspect, 0.001, 3 );
 		ImGui::SliderFloat( "Near Clip", &near, 0.001, far );
@@ -59,6 +71,17 @@ namespace nc {
 		READ_DATA( value, aspect );
 		READ_DATA( value, near );
 		READ_DATA( value, far );
+
+		READ_DATA(value, size);
+
+		std::string type = "";
+
+		if (READ_NAME_DATA(value, "projectionType", type)) {
+
+			if (IsEqualIgnoreCase(type, "orthogonal")) projectionType = eProjectionType::Orthogonal;
+			else WARNING_LOG("Projection Type Not Found!");
+
+		}
 
 	}
 

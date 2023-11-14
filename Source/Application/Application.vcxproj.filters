@@ -37,9 +37,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="World06.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="World05.cpp">
       <Filter>Source\Old Worlds</Filter>
     </ClCompile>
@@ -55,11 +52,14 @@
     <ClCompile Include="World04.cpp">
       <Filter>Source\Old Worlds</Filter>
     </ClCompile>
+    <ClCompile Include="World07.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="World06.cpp">
+      <Filter>Source\Old Worlds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="World06.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="World01.h">
       <Filter>Source\Old Worlds</Filter>
     </ClInclude>
@@ -73,6 +73,12 @@
       <Filter>Source\Old Worlds</Filter>
     </ClInclude>
     <ClInclude Include="World05.h">
+      <Filter>Source\Old Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="World07.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="World06.h">
       <Filter>Source\Old Worlds</Filter>
     </ClInclude>
   </ItemGroup>
@@ -194,23 +200,8 @@
     <None Include="..\..\Build\Assets\materials\refraction.mtrl">
       <Filter>Materials\Active Materials</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_sprite.prog">
-      <Filter>Shaders\Active Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_sprite.vert">
-      <Filter>Shaders\Active Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_sprite.frag">
-      <Filter>Shaders\Active Shaders</Filter>
-    </None>
     <None Include="..\..\Build\Assets\materials\sprite.mtrl">
       <Filter>Materials\Active Materials</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_billboard.prog">
-      <Filter>Shaders\Active Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\unlit_billboard.vert">
-      <Filter>Shaders\Active Shaders</Filter>
     </None>
     <None Include="..\..\Build\Assets\materials\tree.mtrl">
       <Filter>Materials\Active Materials</Filter>
@@ -232,6 +223,36 @@
     </None>
     <None Include="..\..\Build\Assets\materials\postprocess.mtrl">
       <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\json\scene_shadow.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\fantasy.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\shadow_depth.prog">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\shadow_depth.frag">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\shadow_depth.vert">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_billboard.prog">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_billboard.vert">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_sprite.frag">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_sprite.prog">
+      <Filter>Shaders\Old Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\unlit_sprite.vert">
+      <Filter>Shaders\Old Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

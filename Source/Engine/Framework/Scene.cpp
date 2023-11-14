@@ -24,30 +24,13 @@ namespace nc {
 	}
 
 	void Scene::Draw( Renderer& renderer ) {
-		
-		CameraComponent* camera = nullptr;
-		for ( auto& actor : m_actors ) {
-			if ( !actor->active ) continue;
 
-			camera = actor->GetComponent<CameraComponent>();
-			if ( camera ) break;
+		auto lights = GetComponents<LightComponent>();
+		auto cameras = GetComponents<CameraComponent>();
 
-		}
+		CameraComponent* camera = ( !cameras.empty() ) ? cameras[ 0 ] : nullptr;
 
-		if ( !camera ) ERROR_LOG( "No Camera Found!" );
-
-		std::vector<LightComponent*> lights;
-		for ( auto& actor : m_actors ) {
-
-			if ( !actor->active ) continue;
-
-			auto component = actor->GetComponent<LightComponent>();
-			if ( component )
-				lights.push_back( component );
-
-		}
-
-		auto programs = ResourceManager::Instance().GetAllOfType<Program>();
+		auto programs = GET_RESOURCES( Program );
 
 		for ( auto& program : programs ) {
 
@@ -118,7 +101,7 @@ namespace nc {
 
 			if ( ImGui::Selectable( actor->name.c_str(), actor->guiSelect ) ) {
 
-				std::for_each( m_actors.begin(), m_actors.end(), [] ( auto& a ) { a->guiSelect = false; } );
+				std::for_each( m_actors.begin(), m_actors.end(), []( auto& a ) { a->guiSelect = false; } );
 				actor->guiSelect = true;
 
 			}
@@ -129,7 +112,7 @@ namespace nc {
 
 		ImGui::Begin( "Inspector" );
 
-		auto iter = std::find_if( m_actors.begin(), m_actors.end(), [] ( auto& a ) { return a->guiSelect; } );
+		auto iter = std::find_if( m_actors.begin(), m_actors.end(), []( auto& a ) { return a->guiSelect; } );
 
 		if ( iter != m_actors.end() ) ( *iter )->ProcessGui();
 
@@ -154,7 +137,8 @@ namespace nc {
 					std::string name = actor->name;
 					Factory::Instance().RegisterPrototype( name, std::move( actor ) );
 
-				} else {
+				}
+				else {
 
 					Add( std::move( actor ) );
 

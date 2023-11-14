@@ -5,11 +5,11 @@ namespace nc {
 
 	CLASS_DEFINITION( LightComponent )
 
-	bool LightComponent::Initialize() {
+		bool LightComponent::Initialize() {
 		return true;
 	}
 
-	void LightComponent::Update( float dt ) { }
+	void LightComponent::Update( float dt ) {}
 
 	void LightComponent::SetProgram( const res_t<Program> program, const std::string& name ) {
 
@@ -22,12 +22,14 @@ namespace nc {
 		program->SetUniform( name + ".innerAngle", glm::radians( innerAngle ) );
 		program->SetUniform( name + ".outerAngle", glm::radians( outerAngle ) );
 
+		if ( castShadow ) program->SetUniform( "shadowVP", GetShadowMatrix() );
+
 	}
 
 	void LightComponent::ProcessGui() {
 
 		const char* types[] = { "Point", "Directional", "Spot" };
-		ImGui::Combo( "Type", (int*) ( &type ), types, 3 );
+		ImGui::Combo( "Type", ( int* ) ( &type ), types, 3 );
 
 		if ( type == Spot ) {
 
@@ -40,25 +42,39 @@ namespace nc {
 		ImGui::DragFloat( "Intensity", &intensity, 0.1f, 0, 10 );
 		if ( type != Directional ) ImGui::DragFloat( "Range", &range, 0.1f, 0.1f, 50 );
 
+		ImGui::Checkbox( "Cast Shadow", &castShadow );
+		ImGui::DragFloat( "Shadow Size", &shadowSize );
+
+
+	}
+
+	glm::mat4 LightComponent::GetShadowMatrix() {
+
+		glm::mat4 projection = glm::ortho( -shadowSize * 0.5f, shadowSize * 0.5f, -shadowSize * 0.5f, shadowSize * 0.5f, 0.1f, 50.0f );
+		glm::mat4 view = glm::lookAt( m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), glm::vec3( 0, 1, 0 ) );
+
+
+		return projection * view;
 
 	}
 
 	void LightComponent::Read( const nc::json_t& value ) {
 
 		std::string lightType = "";
-		
-		READ_DATA(value, lightType);
 
-		if (lightType == "Point") type = eType::Point;
-		else if (lightType == "Directional") type = eType::Directional;
-		else if (lightType == "Spot") type = eType::Spot;
-		else ERROR_LOG("Light Type Not Found!")
+		READ_DATA( value, lightType );
 
-		READ_DATA(value, color);
-		READ_DATA(value, intensity);
-		READ_DATA(value, range);
-		READ_DATA(value, innerAngle);
-		READ_DATA(value, outerAngle);
+		if ( lightType == "Point" ) type = eType::Point;
+		else if ( lightType == "Directional" ) type = eType::Directional;
+		else if ( lightType == "Spot" ) type = eType::Spot;
+		else WARNING_LOG( "Light Type Not Found!" )
+
+			READ_DATA( value, color );
+		READ_DATA( value, intensity );
+		READ_DATA( value, range );
+		READ_DATA( value, innerAngle );
+		READ_DATA( value, outerAngle );
+		READ_DATA( value, castShadow );
 
 	}
 

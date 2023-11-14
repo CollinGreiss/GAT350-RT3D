@@ -29,6 +29,9 @@
 					"type": "ModelComponent",
 					"modelName": "models/quad.obj",
 					"materialName": "materials/postprocess.mtrl"
+				},
+				{
+					"type": "PostProcessComponent"
 				}
 			]
 		},

@@ -49,6 +49,9 @@
     <ClCompile Include="Components\RotateComponent.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Components\PostProcessComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -114,6 +117,7 @@
     <ClInclude Include="Components\CameraComponent.h" />
     <ClInclude Include="Components\CameraController.h" />
     <ClInclude Include="Components\RotateComponent.h" />
+    <ClInclude Include="Components\PostProcessComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

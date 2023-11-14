@@ -1,7 +1,10 @@
 #pragma once
+
 #include "Actor.h"
-#include <list>
 #include "Components/LightComponent.h"
+
+#include <list>
+#include <vector>
 
 namespace nc {
 
@@ -14,28 +17,32 @@ namespace nc {
 		Scene() = default;
 
 		bool Initialize();
-		void Update( float dt );
-		void Draw( Renderer& renderer );
+		void Update(float dt);
+		void Draw(Renderer& renderer);
 
-		void Add( std::unique_ptr<Actor> actor );
-		void RemoveAll( bool force = false );
+		void Add(std::unique_ptr<Actor> actor);
+		void RemoveAll(bool force = false);
 
-		bool Load( const std::string& filename );
-		void Read( const json_t& value );
+		bool Load(const std::string& filename);
+		void Read(const json_t& value);
 		void ProcessGui();
 
 		template<typename T>
 		T* GetActor();
 		template<typename T = Actor>
-		T* GetActorByName( const std::string& name );
+		T* GetActorByName(const std::string& name);
 
-		void SetGame( World* game ) { m_game = game; }
+
+		template<typename T>
+		std::vector<T*> GetComponents();
+
+		void SetGame(World* game) { m_game = game; }
 
 		friend class Actor;
 
 	public:
 
-		glm::vec3 ambientColor = glm::vec3 { 0.1 };
+		glm::vec3 ambientColor = glm::vec3{ 0.1 };
 
 	private:
 
@@ -46,24 +53,44 @@ namespace nc {
 
 	template<typename T>
 	inline T* Scene::GetActor() {
-		for ( auto& actor : m_actors ) {
-			T* result = dynamic_cast<T*>( actor.get() );
-			if ( result ) return result;
+		for (auto& actor : m_actors) {
+			T* result = dynamic_cast<T*>(actor.get());
+			if (result) return result;
 		}
 
 		return nullptr;
 	}
 
 	template<typename T>
-	inline T* Scene::GetActorByName( const std::string& name ) {
-		for ( auto& actor : m_actors ) {
-			if ( actor->name == name ) {
-				T* result = dynamic_cast<T*>( actor.get() );
-				if ( result ) return result;
+	inline T* Scene::GetActorByName(const std::string& name) {
+		for (auto& actor : m_actors) {
+			if (actor->name == name) {
+				T* result = dynamic_cast<T*>(actor.get());
+				if (result) return result;
 			}
 		}
 
 		return nullptr;
+	}
+
+	template<typename T>
+	inline std::vector<T*> Scene::GetComponents() {
+
+		std::vector<T*> components;
+
+		for (auto& actor : m_actors) {
+
+			if (!actor->active) continue;
+
+			auto component = actor->GetComponent<T>();
+
+			if (component) components.push_back(component);
+
+
+		}
+
+		return components;
+	
 	}
 
 

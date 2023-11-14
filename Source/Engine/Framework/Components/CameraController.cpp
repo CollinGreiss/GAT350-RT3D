@@ -55,8 +55,7 @@ namespace nc {
 
 	void CameraController::ProcessGui() {
 
-
-		ImGui::DragFloat( "yaw", &yaw );
+		ImGui::DragFloat( "Yaw", &yaw );
 		ImGui::SliderFloat( "pitch", &pitch, -89, 89 );
 		ImGui::SliderFloat( "Sensitivity", &sensitivity, 0, 2 );
 		ImGui::SliderFloat( "Speed", &speed, 0, 25 );

@@ -14,21 +14,6 @@ namespace nc {
 		m_scene->Load( "json/scene06.json" );
 		m_scene->Initialize();
 
-		auto texture = std::make_shared<Texture>();
-		texture->CreateTexture(1024, 1024);
-		ADD_RESOURCE("fb_texture", texture);
-
-		auto framebuffer = std::make_shared<Framebuffer>();
-		framebuffer->CreateFramebuffer(texture);
-		ADD_RESOURCE("fb", framebuffer);
-
-		auto material = GET_RESOURCE(Material, "materials/postprocess.mtrl");
-		if (material) {
-
-			material->albedoTexture = GET_RESOURCE(Texture, "fb_texture");
-
-		}
-
 		return true;
 
 	}
@@ -43,39 +28,6 @@ namespace nc {
 
 		m_scene->Update( dt );
 		m_scene->ProcessGui();
-
-
-		ImGui::Begin("Post Process");
-
-		ImGui::SliderFloat("Blend", &blend, 0, 1);
-		ImGui::SliderFloat3("Color Tint", glm::value_ptr(tint), 0, 1);
-
-		bool effect = params & INVERT_MASK;
-		if (ImGui::Checkbox("Invert", &effect))
-			if (effect) params |= INVERT_MASK;
-			else params ^= INVERT_MASK;
-
-		effect = params & GREYSCALE_MASK;
-		if (ImGui::Checkbox("Grey Scale", &effect))
-			if (effect) params |= GREYSCALE_MASK;
-			else params ^= GREYSCALE_MASK;
-
-		effect = params & COLORTINT_MASK;
-		if (ImGui::Checkbox("Color Tint", &effect))
-			if (effect) params |= COLORTINT_MASK;
-			else params ^= COLORTINT_MASK;
-
-		ImGui::End();
-
-		auto program = GET_RESOURCE(Program, "shaders/postprocess.prog");
-		if (program) {
-
-			program->Use();
-			program->SetUniform("blend", blend);
-			program->SetUniform("tint", tint);
-			program->SetUniform("params", params);
-
-		}
 
 		ENGINE.GetSystem<Gui>()->EndFrame();
 
