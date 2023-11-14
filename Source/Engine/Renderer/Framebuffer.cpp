@@ -38,7 +38,7 @@ namespace nc {
 		glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);
 
 		// create the depth buffer (bind)
-		CreateDepthbuffer(m_size.x, m_size.y);
+		CreateDepthBuffer(m_size.x, m_size.y);
 
 		// bind the texture to the FBO
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_texture->m_texture, 0);
@@ -56,7 +56,7 @@ namespace nc {
 
 	}
 
-	bool Framebuffer::CreateDepthbuffer(int width, int height) {
+	bool Framebuffer::CreateDepthBuffer(int width, int height) {
 
 		GLuint depthBuffer;
 		glGenRenderbuffers(1, &depthBuffer);
@@ -70,6 +70,33 @@ namespace nc {
 			return false;
 
 		}
+
+		return true;
+
+	}
+
+	bool Framebuffer::CreateDepthBuffer( res_t<Texture> texture ) {
+
+		m_texture = texture;
+		m_size = m_texture->GetSize();
+		m_texture->Bind();
+
+		glGenFramebuffers( 1, &m_fbo );
+		glBindFramebuffer( GL_FRAMEBUFFER, m_fbo );
+
+		glFramebufferTexture2D( GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_texture->m_texture, 0 );
+
+		glDrawBuffer( GL_NONE );
+		glReadBuffer( GL_NONE );
+
+		if ( glCheckFramebufferStatus( GL_FRAMEBUFFER ) != GL_FRAMEBUFFER_COMPLETE ) {
+
+			ERROR_LOG( "Error creating frame buffer." );
+			return false;
+
+		}
+
+		glBindFramebuffer( GL_FRAMEBUFFER, 0 );
 
 		return true;
 
