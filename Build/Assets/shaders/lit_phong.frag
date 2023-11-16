@@ -12,6 +12,7 @@
 in layout(location = 0) vec3 fposition;
 in layout(location = 1) vec3 fnormal;
 in layout(location = 2) vec2 ftexcoord;
+in layout(location = 3) vec4 fshadowcoord;
 
 out layout(location = 0) vec4 ocolor;
 
@@ -19,6 +20,7 @@ layout(binding = 0) uniform sampler2D albedoTexture;
 layout(binding = 1) uniform sampler2D specularTexture;
 layout(binding = 2) uniform sampler2D normalTexture;
 layout(binding = 3) uniform sampler2D emissiveTexture;
+layout(binding = 5) uniform sampler2D shadowTexture;
 
 uniform mat4 model;
 uniform mat4 view;
@@ -57,6 +59,8 @@ uniform int numLights = 3;
 
 uniform vec3 ambientLight = vec3( 0.2, 0.2, 0.2 );
 
+uniform float shadowBias = 0.005;
+
 float attenuation(in vec3 position1, in vec3 position2, in float range) {
 
 	float distanceSqr = dot(position1 - position2, position1 - position2);
@@ -67,6 +71,13 @@ float attenuation(in vec3 position1, in vec3 position2, in float range) {
 	return attenuation;
 
 }
+
+float calculateShadow(vec4 shadowcoord, float bias) {
+
+	return texture(shadowTexture, shadowcoord.xy).x < shadowcoord.z - shadowBias ? 0 : 1;
+
+}
+
 
 void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, out vec3 specular) {
 	
@@ -87,9 +98,11 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 	specular = vec3(0);
 	if (intensity > 0) {
 
-		vec3 reflection = reflect(-lightDir, normal);
 		vec3 viewDir = normalize(-position);
-		intensity = max(dot(reflection, viewDir), 0);
+		vec3 h = normalize(viewDir + lightDir);
+
+		intensity = max(dot(h, normal), 0);
+
 		intensity = pow(intensity, material.shininess);
 		specular = vec3(intensity * spotIntensity);
 
@@ -104,6 +117,8 @@ void main() {
 	vec4 emissiveColor = bool(material.params & EMISSIVE_TEXTURE_MASK) ? texture(emissiveTexture, ftexcoord, 1) : vec4(material.emissive, 1);
 	
 	ocolor = vec4(ambientLight, 1) * albedoColor + emissiveColor;
+
+	float shadow = calculateShadow(fshadowcoord, shadowBias);
  
 	for (int i = 0; i < numLights; i++) {
 
@@ -113,7 +128,7 @@ void main() {
 		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
  
 		phong(lights[i], fposition, fnormal, diffuse, specular);
-		ocolor += ( (vec4(diffuse, 1) * albedoColor) + vec4(specular, 1) * specularColor) * lights[i].intensity * attenuation;
+		ocolor += ( (vec4(diffuse, 1) * albedoColor) + ( vec4(specular, 1) * specularColor )) * lights[i].intensity * attenuation * shadow;
 
 	}
 

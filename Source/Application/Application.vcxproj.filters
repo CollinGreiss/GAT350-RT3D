@@ -254,5 +254,8 @@
     <None Include="..\..\Build\Assets\shaders\unlit_sprite.vert">
       <Filter>Shaders\Old Shaders</Filter>
     </None>
+    <None Include="..\..\Build\Assets\materials\ui_light.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

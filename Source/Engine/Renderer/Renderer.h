@@ -1,24 +1,25 @@
 #pragma once
-
 #include "Framework/System.h"
 #include "Font.h"
 #include "Model.h"
 #include "Texture.h"
-#include "Material.h"
+#include "Cubemap.h"
+#include "Shader.h"
+#include "Program.h"
 #include "Gui.h"
-#include "VertexBuffer.h"
 #include "Framebuffer.h"
+#include "VertexBuffer.h"
+#include "Material.h"
 
 #include <glad/include/glad/glad.h>
 #include <SDL2-2.28.4/include/SDL.h>
 #include <string>
 
-namespace nc {
-
-	class Renderer : public ISystem {
-
+namespace nc
+{
+	class Renderer : public ISystem
+	{
 	public:
-
 		Renderer() = default;
 		~Renderer() = default;
 
@@ -28,7 +29,7 @@ namespace nc {
 		void Update() {}
 
 		void CreateWindow(const std::string& title, int width, int height);
-		void BeginFrame(const glm::vec3& color = glm::vec3 { 0 } );
+		void BeginFrame(const glm::vec3 color = { 0, 0, 0 });
 		void EndFrame();
 
 		void ClearDepth();
@@ -39,26 +40,21 @@ namespace nc {
 		void DrawPoint(int x, int y);
 		void DrawPoint(float x, float y);
 
-		void SetViewport( int width, int height );
+		void SetViewport(int width, int height);
 		void ResetViewport();
 
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
 
-		SDL_Window* GetWindow() { return m_window; };
-
-		friend class Gui;
 		friend class Texture;
+		friend class Gui;
 
 	private:
-
 		int m_width = 0;
 		int m_height = 0;
 
 		SDL_Renderer* m_renderer = nullptr;
 		SDL_Window* m_window = nullptr;
 		SDL_GLContext m_context = NULL;
-
 	};
-
 }

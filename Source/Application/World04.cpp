@@ -10,7 +10,7 @@ namespace nc {
 
 		auto material = GET_RESOURCE( Material, "materials/squirrel.mtrl" );
 		m_model = std::make_shared<Model>();
-		m_model->SetMaterial( material );
+		//m_model->SetMaterial( material );
 		m_model->Load( "models/squirrel.glb", glm::vec3 { 0, -0.7f, 0 }, glm::vec3 { 0 }, glm::vec3 { 0.4f } );
 
 		for ( int i = 0; i < 3; i++ ) {
@@ -96,9 +96,9 @@ namespace nc {
 
 		m_time += dt;
 
-		auto material = m_model->GetMaterial();
-		material->ProcessGui();
-		material->Bind();
+		//auto material = m_model->GetMaterial();
+		//material->ProcessGui();
+		/*material->Bind();
 
 		material->GetProgram()->SetUniform( "model", m_transform.GetMatrix() );
 
@@ -126,7 +126,7 @@ namespace nc {
 
 		}
 
-		material->GetProgram()->SetUniform( "ambientLight", ambientColor );
+		material->GetProgram()->SetUniform( "ambientLight", ambientColor );*/
 
 		ENGINE.GetSystem<Gui>()->EndFrame();
 

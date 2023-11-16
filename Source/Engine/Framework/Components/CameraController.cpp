@@ -5,7 +5,7 @@
 
 namespace nc {
 
-	CLASS_DEFINITION( CameraController )
+	CLASS_DEFINITION( CameraController );
 
 	bool CameraController::Initialize() {
 
@@ -36,10 +36,10 @@ namespace nc {
 		forward.z = sin( glm::radians( yaw - 90.0f ) ) * cos( glm::radians( pitch ) );
 		forward = glm::normalize( forward );
 
-		glm::mat4 view = glm::lookAt( glm::vec3{ 0.0f }, -forward, glm::vec3{ 0, 1, 0 } );
+		glm::mat4 view = glm::lookAt( glm::vec3 { 0.0f }, -forward, glm::vec3 { 0, 1, 0 } );
 		m_owner->transform.rotation = glm::conjugate( glm::quat_cast( view ) );
 
-		glm::vec3 direction{ 0 };
+		glm::vec3 direction { 0 };
 
 		if ( ENGINE.GetSystem<InputSystem>()->GetKeyDown( SDL_SCANCODE_A ) ) direction.x += 1;
 		if ( ENGINE.GetSystem<InputSystem>()->GetKeyDown( SDL_SCANCODE_D ) ) direction.x -= 1;
@@ -55,16 +55,19 @@ namespace nc {
 
 	void CameraController::ProcessGui() {
 
-		ImGui::DragFloat( "Yaw", &yaw );
-		ImGui::SliderFloat( "pitch", &pitch, -89, 89 );
-		ImGui::SliderFloat( "Sensitivity", &sensitivity, 0, 2 );
-		ImGui::SliderFloat( "Speed", &speed, 0, 25 );
+		ImGui::DragFloat( "Speed", &speed, 0.1f );
+		ImGui::DragFloat( "Sensitivity", &sensitivity, 0.1f );
 
 	}
 
 	void CameraController::Read( const json_t& value ) {
 
 		READ_DATA( value, speed );
+
+		speed = 7;
+		std::string test = "json/scene_shadow.json";
+		WRITE_DATA(test, speed );
+
 		READ_DATA( value, sensitivity );
 
 	}

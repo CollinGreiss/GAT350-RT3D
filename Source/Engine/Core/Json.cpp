@@ -1,6 +1,7 @@
 #include "Json.h"
+
 #include "FileIO.h"
-#include "Logger.h"
+
 #include <rapidjson/include/rapidjson/istreamwrapper.h>
 #include <sstream>
 

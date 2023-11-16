@@ -5,15 +5,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source\IMGui">
-      <UniqueIdentifier>{4bba29ab-5a8a-4c95-9350-9049ecec263f}</UniqueIdentifier>
+    <Filter Include="Source\imgui">
+      <UniqueIdentifier>{98c51d80-db02-47ee-a786-d63eea071e6e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Model.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
@@ -25,40 +22,43 @@
     <ClCompile Include="..\..\ThirdParty\glad\src\glad.c">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
+    <ClCompile Include="Program.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Program.cpp">
+    <ClCompile Include="Shader.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Gui.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Source\imgui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\ThirdParty\imgui\imgui_impl_sdlrenderer.cpp">
-      <Filter>Source\IMGui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\ThirdParty\imgui\imgui_tables.cpp">
-      <Filter>Source\IMGui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\ThirdParty\imgui\imgui_widgets.cpp">
-      <Filter>Source\IMGui</Filter>
+      <Filter>Source\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\ThirdParty\imgui\imgui.cpp">
-      <Filter>Source\IMGui</Filter>
+      <Filter>Source\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\ThirdParty\imgui\imgui_draw.cpp">
-      <Filter>Source\IMGui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\ThirdParty\imgui\imgui_impl_opengl3.cpp">
-      <Filter>Source\IMGui</Filter>
+      <Filter>Source\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\ThirdParty\imgui\imgui_impl_sdl.cpp">
-      <Filter>Source\IMGui</Filter>
+      <Filter>Source\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\imgui\imgui_tables.cpp">
+      <Filter>Source\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\imgui\imgui_widgets.cpp">
+      <Filter>Source\imgui</Filter>
     </ClCompile>
     <ClCompile Include="VertexBuffer.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Cubemap.cpp">
@@ -70,9 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Model.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
@@ -94,6 +91,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Cubemap.h">

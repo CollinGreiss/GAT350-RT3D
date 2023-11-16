@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ThirdPartyDir)SDL2-2.28.4\Include;$(ThirdPartyDir)assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -100,14 +100,13 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;assimp-vc143-mtd.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib; SDL2main.lib; SDL2_ttf.lib; SDL2_image.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget);$(ThirdPartyDir)assimp\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>xcopy "$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget)\*.dll" "$(SolutionDir)Build" /Y
-xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" /Y</Command>
+      <Command>xcopy "$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget)\*.dll" "$(SolutionDir)Build" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,7 +117,7 @@ xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" 
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ThirdPartyDir)SDL2-2.28.4\Include;$(ThirdPartyDir)assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -128,14 +127,13 @@ xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" 
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;assimp-vc143-mtd.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib; SDL2main.lib; SDL2_ttf.lib; SDL2_image.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget);$(ThirdPartyDir)assimp\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>xcopy "$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget)\*.dll" "$(SolutionDir)Build" /Y
-xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" /Y</Command>
+      <Command>xcopy "$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget)\*.dll" "$(SolutionDir)Build" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -144,7 +142,7 @@ xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" 
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ThirdPartyDir)SDL2-2.28.4\Include;$(ThirdPartyDir)assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ThirdPartyDir)SDL2-2.28.4\include;$(ThirdPartyDir)assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -170,7 +168,7 @@ xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" 
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ThirdPartyDir)SDL2-2.28.4\Include;$(ThirdPartyDir)assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -180,14 +178,13 @@ xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" 
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;assimp-vc143-mtd.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib; SDL2main.lib; SDL2_ttf.lib; SDL2_image.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget);$(ThirdPartyDir)assimp\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>xcopy "$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget)\*.dll" "$(SolutionDir)Build" /Y
-xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" /Y</Command>
+      <Command>xcopy "$(ThirdPartyDir)SDL2-2.28.4\lib\$(PlatformTarget)\*.dll" "$(SolutionDir)Build" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

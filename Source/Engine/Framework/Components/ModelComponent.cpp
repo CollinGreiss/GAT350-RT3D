@@ -1,40 +1,28 @@
 #include "ModelComponent.h"
 #include "Framework/Actor.h"
 #include "Framework/Resource/ResourceManager.h"
-#include "Renderer/Program.h"
-#include <Framework/Engine.h>
 
 namespace nc {
-
 	CLASS_DEFINITION( ModelComponent )
 
-	bool ModelComponent::Initialize() {
-
+		bool ModelComponent::Initialize() {
 		if ( !modelName.empty() ) {
-
-			model = std::make_shared<Model>();
-			model->Load( modelName );
-			//ADD_RESOURCE( modelName, model );
+			model = GET_RESOURCE( Model, modelName );
 
 		}
-
-		if ( model && !materialName.empty() )
-			model->SetMaterial( GET_RESOURCE( Material, materialName ) );
+		if ( model && !materialName.empty() ) {
+			material = GET_RESOURCE( Material, materialName );
+		}
 
 		return true;
-
 	}
 
-	void ModelComponent::Update( float dt ) {
-
-
-	}
+	void ModelComponent::Update( float dt ) {}
 
 	void ModelComponent::Draw( Renderer& renderer ) {
 
-		auto material = model->GetMaterial();
 		material->Bind();
-		material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
+		material->GetProgram()->SetUniform( "model", m_owner->transform.GetMatrix() );
 
 		glDepthMask( enableDepth );
 		glCullFace( cullface );
@@ -43,28 +31,26 @@ namespace nc {
 
 	}
 
-	void ModelComponent::ProcessGui( ) {
+	void ModelComponent::ProcessGui() {
 
-		auto material = model->GetMaterial();
+		ImGui::Checkbox( "Enable Depth", &enableDepth );
+		ImGui::Checkbox( "Cast Shadow", &castShadow );
 		material->ProcessGui();
 
 	}
 
 	void ModelComponent::Read( const json_t& value ) {
-
 		READ_DATA( value, modelName );
 		READ_DATA( value, materialName );
-		
+
 		READ_DATA( value, enableDepth );
-		
+		READ_DATA( value, castShadow );
+
 		std::string cullfaceName;
 		if ( READ_NAME_DATA( value, "cullface", cullfaceName ) ) {
-
 			if ( IsEqualIgnoreCase( cullfaceName, "front" ) ) cullface = GL_FRONT;
-
+			if ( IsEqualIgnoreCase( cullfaceName, "none" ) ) cullface = GL_NONE;
 		}
-		
 
 	}
-
 }

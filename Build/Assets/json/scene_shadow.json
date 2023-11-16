@@ -6,7 +6,7 @@
 			"persistent": true,
 			"transform": {
 				"position": [ 0, 0, 0 ],
-				"scale": [ 10, 10, 10 ],
+				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
@@ -21,25 +21,48 @@
 		},
 		{
 			"type": "Actor",
-			"name": "postprocess",
+			"name": "tower1",
 			"persistent": true,
-
+			"transform": {
+				"position": [ 3, 0, -3 ],
+				"scale": [ 0.2, 0.2, 0.2 ],
+				"rotation": [ 0, 0, 0 ]
+			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "models/quad.obj",
-					"materialName": "materials/postprocess.mtrl"
-				},
-				{
-					"type": "PostProcessComponent"
+					"modelName": "Fantasy/Obj/SF_Bld_Castle_TallTower_01.obj",
+					"materialName": "Fantasy/fantasy.mtrl"
 				}
 			]
 		},
 		{
 			"type": "Actor",
-			"name": "depth debug",
+			"name": "ground",
 			"persistent": true,
-
+			"transform": {
+				"position": [ 0, 0, 0 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "Fantasy/Obj/SF_Env_Tile_Grass_01.obj",
+					"materialName": "fantasy/ground.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "depth_debug",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ 2.4, 1.4, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
 			"components": [
 				{
 					"type": "ModelComponent",
@@ -50,56 +73,25 @@
 		},
 		{
 			"type": "Actor",
-			"name": "orge",
+			"name": "camera1",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 0, -1 ],
-				"scale": [ 0.4, 0.4, 0.4 ],
-				"rotation": [ 0, 0, 0 ]
+				"position": [ 0, 3, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 180, 0 ]
 			},
 			"components": [
 				{
-					"type": "ModelComponent",
-					"modelName": "models/ogre.obj",
-					"materialName": "materials/ogre.mtrl"
+					"type": "CameraComponent",
+					"fov": 70,
+					"aspect": 1.77,
+					"near": 0.1,
+					"far": 100
 				},
 				{
-					"type": "RotateComponent",
-					"euler": [ 0, 1, 0 ]
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "house",
-			"persistent": true,
-			"transform": {
-				"position": [ 0, -0.5, -1 ],
-				"scale": [ 0.1, 0.1, 0.1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Bld_Elven_House_06.obj",
-					"materialName": "materials/fantasy.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "castle",
-			"persistent": true,
-			"transform": {
-				"position": [ 0, -0.5, -10 ],
-				"scale": [ 0.1, 0.1, 0.1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Env_Preset_Undead_Castle_01.obj",
-					"materialName": "materials/fantasy.mtrl"
+					"type": "CameraController",
+					"speed": 10,
+					"sensitivity": 0.1
 				}
 			]
 		},
@@ -108,36 +100,26 @@
 			"name": "light1",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 0, 0 ],
-				"scale": [ 0.4, 0.4, 0.4 ],
-				"rotation": [ 0, 180, 0 ]
+				"position": [ 0, 3, 0 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 20, 140, 0 ]
 			},
 			"components": [
 				{
 					"type": "LightComponent",
-					"lightType": "Directional",
+					"lightType": "directional",
 					"color": [ 1, 1, 1 ],
 					"intensity": 1,
 					"range": 20,
-					"innerAngle": 20,
-					"outerAngle": 30
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "camera1",
-			"persistent": true,
-			"transform": {
-				"position": [ 0, 0, 0 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "CameraComponent"
+					"innerAngle": 10,
+					"outerAngle": 30,
+					"castShadow": true
+
 				},
 				{
-					"type": "CameraController"
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/ui_light.mtrl"
 				}
 			]
 		}

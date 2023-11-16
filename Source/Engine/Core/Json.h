@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Math/Rect.h"
+#include "Logger.h"
+
 #include <rapidjson/include/rapidjson/document.h>
 #include <string>
 #include <vector>
@@ -12,6 +14,8 @@
 #define READ_NAME_DATA_REQUIRED(value, name, data)	nc::Json::Read(value, name, data, true)
 #define HAS_DATA(value, data)						value.HasMember(#data)
 #define GET_DATA(value, data)						value[#data]
+
+#define WRITE_DATA(path, data)						nc::Json::Write(path, #data, data)
 
 namespace nc {
 

@@ -184,6 +184,7 @@
     <None Include="..\..\Build\Assets\materials\sprite.mtrl" />
     <None Include="..\..\Build\Assets\materials\squirrel.mtrl" />
     <None Include="..\..\Build\Assets\materials\tree.mtrl" />
+    <None Include="..\..\Build\Assets\materials\ui_light.mtrl" />
     <None Include="..\..\Build\Assets\shaders\cubemap.frag" />
     <None Include="..\..\Build\Assets\shaders\lit_phong.frag" />
     <None Include="..\..\Build\Assets\shaders\lit_phong.prog" />

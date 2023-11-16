@@ -84,13 +84,17 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 	float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
 	diffuse = (light.color * intensity);
 	
+	specular = vec3(0);
 	if (intensity > 0) {
 
-		vec3 reflection = reflect(-lightDir, normal);
 		vec3 viewDir = normalize(-position);
-		intensity = max(dot(reflection, viewDir), 0);
+		vec3 h = normalize(viewDir + lightDir);
+
+		intensity = max(dot(h, normal), 0);
+
 		intensity = pow(intensity, material.shininess);
 		specular = vec3(intensity * spotIntensity);
+
 
 	}
 
@@ -116,7 +120,7 @@ void main() {
 		normal = normalize(ftbn * normal);
 
 		phong(lights[i], fposition, normal, diffuse, specular);
-		ocolor += ( (vec4(diffuse, 1) * albedoColor) + vec4(specular, 1) * specularColor ) * lights[i].intensity * attenuation;
+		ocolor += ( (vec4(diffuse, 1) * albedoColor) + (vec4(specular, 1) * specularColor) ) * lights[i].intensity * attenuation;
 
 	}
 
