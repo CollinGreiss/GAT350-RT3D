@@ -3,7 +3,7 @@
 
 namespace nc {
 
-	CLASS_DEFINITION( Actor )
+	CLASS_DEFINITION( Actor );
 
 
 	Actor::Actor( const Actor& other ) {
@@ -14,6 +14,7 @@ namespace nc {
 		transform = other.transform;
 		m_scene = other.m_scene;
 		m_game = other.m_game;
+		active = other.active;
 
 		for ( auto& component : other.components ) {
 
@@ -113,6 +114,7 @@ namespace nc {
 				std::string type;
 				READ_DATA( componentValue, type );
 
+				
 				auto component = CREATE_CLASS_BASE( Component, type );
 				component->Read( componentValue );
 

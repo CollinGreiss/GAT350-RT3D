@@ -5,6 +5,9 @@
 #include <rapidjson/include/rapidjson/istreamwrapper.h>
 #include <sstream>
 
+#include <rapidjson/include/rapidjson/writer.h>
+#include <rapidjson/include/rapidjson/stringbuffer.h>
+
 namespace nc {
 
 	bool Json::Load( const std::string& filename, rapidjson::Document& document ) {
@@ -259,6 +262,37 @@ namespace nc {
 			data.push_back( array[i].GetInt() );
 
 		}
+
+		return true;
+
+	}
+
+	bool Json::Write( rapidjson::Value& value, const std::string& name, float data, const std::string& filename ) {
+
+		if ( !value.HasMember( name.c_str() ) || !value[name.c_str()].IsNumber() ) {
+
+			ERROR_LOG( "Cannot read required json data: " << name.c_str() );
+			return false;
+
+		}
+
+		 value[name.c_str()].SetFloat( data ); 
+
+		 rapidjson::StringBuffer buffer;
+		 rapidjson::Writer<rapidjson::StringBuffer> writer( buffer );
+		 value.Accept( writer );
+
+		 std::ofstream outFile( filename );
+
+		 if ( !outFile.is_open() ) {
+
+			 ERROR_LOG( "Failed to open file for writing: " << filename );
+			 return false;
+
+		 }
+
+		 outFile << buffer.GetString();
+		 outFile.close();
 
 		return true;
 

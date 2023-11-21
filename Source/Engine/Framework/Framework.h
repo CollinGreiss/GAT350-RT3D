@@ -21,5 +21,6 @@
 #include "Resource/ResourceManager.h"
 #include "Event/EventManager.h"
 
+#include "Editor.h"
 #include "Engine.h"
 

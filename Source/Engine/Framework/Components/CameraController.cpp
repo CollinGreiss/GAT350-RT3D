@@ -1,5 +1,7 @@
 #include "CameraController.h"
+
 #include "Framework/Actor.h"
+#include "Framework/Scene.h"
 #include "Framework/Engine.h"
 #include "Input/InputSystem.h"
 
@@ -64,11 +66,13 @@ namespace nc {
 
 		READ_DATA( value, speed );
 
-		speed = 7;
-		std::string test = "json/scene_shadow.json";
-		WRITE_DATA(test, speed );
+		//speed = 7;
+		//json_t& test = const_cast<json_t&>(value) ;
+
+		//nc::Json::Write( test, "speed", speed, m_owner->m_scene->jsonFile);
 
 		READ_DATA( value, sensitivity );
+
 
 	}
 

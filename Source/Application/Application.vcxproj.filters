@@ -52,10 +52,13 @@
     <ClCompile Include="World04.cpp">
       <Filter>Source\Old Worlds</Filter>
     </ClCompile>
-    <ClCompile Include="World07.cpp">
+    <ClCompile Include="World06.cpp">
+      <Filter>Source\Old Worlds</Filter>
+    </ClCompile>
+    <ClCompile Include="World08.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="World06.cpp">
+    <ClCompile Include="World07.cpp">
       <Filter>Source\Old Worlds</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,10 +78,13 @@
     <ClInclude Include="World05.h">
       <Filter>Source\Old Worlds</Filter>
     </ClInclude>
-    <ClInclude Include="World07.h">
+    <ClInclude Include="World06.h">
+      <Filter>Source\Old Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="World08.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="World06.h">
+    <ClInclude Include="World07.h">
       <Filter>Source\Old Worlds</Filter>
     </ClInclude>
   </ItemGroup>
@@ -256,6 +262,30 @@
     </None>
     <None Include="..\..\Build\Assets\materials\ui_light.mtrl">
       <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_phong_cel.prog">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_phong_cel.vert">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\lit_phong_cel.frag">
+      <Filter>Shaders\Active Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\lit_phong_cel.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\json\test.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\ui_camera.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\basic.mtrl">
+      <Filter>Materials\Active Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\json\scene_editor.json">
+      <Filter>Scenes</Filter>
     </None>
   </ItemGroup>
 </Project>

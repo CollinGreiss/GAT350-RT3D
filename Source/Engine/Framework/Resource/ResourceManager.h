@@ -47,6 +47,7 @@ namespace nc {
 		
 		}
 
+		resource->name = lname;
 		m_resources[lname] = resource;
 
 		return true;

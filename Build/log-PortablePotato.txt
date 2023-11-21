@@ -1,0 +1,9 @@
+INFO: Factory.h(89) Class registered: RotateComponent
+INFO: Factory.h(89) Class registered: PostProcessComponent
+INFO: Factory.h(89) Class registered: CameraController
+INFO: Factory.h(89) Class registered: ModelComponent
+INFO: Factory.h(89) Class registered: LightComponent
+INFO: Factory.h(89) Class registered: EnginePhysicsComponent
+INFO: Factory.h(89) Class registered: CameraComponent
+INFO: Factory.h(89) Class registered: Actor
+INFO: Main.cpp(17) Initialize Engine...

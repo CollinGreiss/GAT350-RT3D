@@ -15,7 +15,7 @@
 #define HAS_DATA(value, data)						value.HasMember(#data)
 #define GET_DATA(value, data)						value[#data]
 
-#define WRITE_DATA(path, data)						nc::Json::Write(path, #data, data)
+#define WRITE_DATA(value, data, filename)			nc::Json::Write(value, #data, data, filename)
 
 namespace nc {
 
@@ -35,6 +35,9 @@ namespace nc {
 		static bool Read( const rapidjson::Value& value, const std::string& name, Rect& data, bool required = false );
 		static bool Read( const rapidjson::Value& value, const std::string& name, std::vector<std::string>& data, bool required = false );
 		static bool Read( const rapidjson::Value& value, const std::string& name, std::vector<int>& data, bool required = false );
+
+		static bool Write( rapidjson::Value& value, const std::string& name, float data, const std::string& filename );
+		
 
 	};
 

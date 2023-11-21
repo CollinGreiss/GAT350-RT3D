@@ -34,6 +34,7 @@ void main() {
 	mat4 modelView = view * model;
 
 	oposition = vec3(modelView * vec4(vposition, 1) );
+
 	onormal = normalize(mat3(modelView) * vnormal);
 	otexcoord = (vtexcoord * material.tiling) + material.offset;
 	oshadowcoord = shadowVP * model * vec4(vposition, 1);

@@ -3,18 +3,19 @@
 #include "Framework/Resource/ResourceManager.h"
 
 namespace nc {
-	CLASS_DEFINITION( ModelComponent )
 
-		bool ModelComponent::Initialize() {
-		if ( !modelName.empty() ) {
+	CLASS_DEFINITION( ModelComponent );
+
+	bool ModelComponent::Initialize() {
+
+		if ( !modelName.empty() )
 			model = GET_RESOURCE( Model, modelName );
 
-		}
-		if ( model && !materialName.empty() ) {
+		if ( model && !materialName.empty() )
 			material = GET_RESOURCE( Material, materialName );
-		}
 
 		return true;
+
 	}
 
 	void ModelComponent::Update( float dt ) {}
@@ -33,6 +34,12 @@ namespace nc {
 
 	void ModelComponent::ProcessGui() {
 
+		( model ) ? ImGui::Text( "Model: %s", model->name.c_str() ) : ImGui::Text( "None" );
+		Gui::GetDialogResource<Model>( model, "ModelTextureDialog", "Open Model", "Model file (*.obj;*.fbx){.obj,.fbx},.*" );
+
+		( material ) ? ImGui::Text( "Material: %s", material->name.c_str() ) : ImGui::Text( "None" );
+		Gui::GetDialogResource<Material>( material, "MaterialTextureDialog", "Open Material", "Material file (*.mtrl){.mtrl},.*" );
+
 		ImGui::Checkbox( "Enable Depth", &enableDepth );
 		ImGui::Checkbox( "Cast Shadow", &castShadow );
 		material->ProcessGui();
@@ -40,6 +47,7 @@ namespace nc {
 	}
 
 	void ModelComponent::Read( const json_t& value ) {
+
 		READ_DATA( value, modelName );
 		READ_DATA( value, materialName );
 
@@ -47,10 +55,14 @@ namespace nc {
 		READ_DATA( value, castShadow );
 
 		std::string cullfaceName;
+
 		if ( READ_NAME_DATA( value, "cullface", cullfaceName ) ) {
+
 			if ( IsEqualIgnoreCase( cullfaceName, "front" ) ) cullface = GL_FRONT;
 			if ( IsEqualIgnoreCase( cullfaceName, "none" ) ) cullface = GL_NONE;
+
 		}
 
 	}
+
 }

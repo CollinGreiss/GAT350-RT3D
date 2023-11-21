@@ -12,6 +12,12 @@ namespace nc {
 
 	}
 
+	std::string getRelativePath( const std::filesystem::path& path ) {
+		
+		return std::filesystem::relative( path ).string();
+
+	}
+
 	bool setFilePath( const std::filesystem::path& path ) {
 
 		std::error_code ec;

@@ -15,7 +15,7 @@
 	};
 
 #define CLASS_DEFINITION(classname) \
-	classname::Register register_class;
+	classname::Register register_class
 
 
 namespace nc {
@@ -28,7 +28,9 @@ namespace nc {
 		Object( const std::string& name ) : name { name } {}
 
 		virtual ~Object() {
+
 			OnDestroy();
+
 		}
 
 		CLASS_DECLARATION( Object )

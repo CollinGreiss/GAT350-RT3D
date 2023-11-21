@@ -200,6 +200,7 @@ xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" 
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Framebuffer.cpp" />
     <ClCompile Include="Gui.cpp" />
+    <ClCompile Include="ImFileDialog.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Program.cpp" />
@@ -213,6 +214,7 @@ xcopy "$(ThirdPartyDir)assimp\lib\$(Configuration)\*.dll" "$(SolutionDir)Build" 
     <ClInclude Include="Font.h" />
     <ClInclude Include="Framebuffer.h" />
     <ClInclude Include="Gui.h" />
+    <ClInclude Include="ImFileDialog.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Program.h" />

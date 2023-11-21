@@ -13,6 +13,8 @@ namespace nc {
 
 	void Scene::Update( float dt ) {
 
+		m_dt = dt;
+
 		auto iter = m_actors.begin();
 		while ( iter != m_actors.end() ) {
 
@@ -28,7 +30,7 @@ namespace nc {
 		auto lights = GetComponents<LightComponent>();
 		auto cameras = GetComponents<CameraComponent>();
 
-		CameraComponent* camera = ( !cameras.empty() ) ? cameras[ 0 ] : nullptr;
+		CameraComponent* camera = ( !cameras.empty() ) ? cameras[0] : nullptr;
 
 		auto programs = GET_RESOURCES( Program );
 
@@ -75,15 +77,34 @@ namespace nc {
 
 	}
 
+	void Scene::Remove( Actor* actor ) {
+
+		auto iter = m_actors.begin();
+		while ( iter != m_actors.end() ) {
+
+			if ( ( *iter ).get() == actor ) {
+
+				m_actors.erase( iter );
+				break;
+
+			} else iter++;
+
+		}
+
+	}
+
 	bool Scene::Load( const std::string& filename ) {
 
 		rapidjson::Document document;
 
 		if ( !Json::Load( filename, document ) ) {
+
 			ERROR_LOG( "Could not load scene file: " << filename );
 			return false;
 
 		}
+
+		jsonFile = filename;
 
 		Read( document );
 
@@ -93,30 +114,17 @@ namespace nc {
 
 	void Scene::ProcessGui() {
 
-		ImGui::Begin( "Scene" );
+
+		float fps = 1 / m_dt;
+		float ms = 1000 * m_dt;
+
+		m_fps -= m_fps / 30;
+		m_fps += fps / 30;
+
+		ImVec4 color = ( fps < 30 ) ? ImVec4 { 1, 0, 0, 1 } : ImVec4 { 0, 1, 0, 1 };
+		ImGui::TextColored( color, "%.0f FPS (%.2f)", m_fps, ms );
+
 		ImGui::ColorEdit3( "Ambient", glm::value_ptr( ambientColor ) );
-		ImGui::Separator();
-
-		for ( auto& actor : m_actors ) {
-
-			if ( ImGui::Selectable( actor->name.c_str(), actor->guiSelect ) ) {
-
-				std::for_each( m_actors.begin(), m_actors.end(), []( auto& a ) { a->guiSelect = false; } );
-				actor->guiSelect = true;
-
-			}
-
-		}
-
-		ImGui::End();
-
-		ImGui::Begin( "Inspector" );
-
-		auto iter = std::find_if( m_actors.begin(), m_actors.end(), []( auto& a ) { return a->guiSelect; } );
-
-		if ( iter != m_actors.end() ) ( *iter )->ProcessGui();
-
-		ImGui::End();
 
 	}
 
@@ -137,8 +145,7 @@ namespace nc {
 					std::string name = actor->name;
 					Factory::Instance().RegisterPrototype( name, std::move( actor ) );
 
-				}
-				else {
+				} else {
 
 					Add( std::move( actor ) );
 
